@@ -11,7 +11,7 @@ jobs:
       - name: Send post to Telegram
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-          CHANNEL: "@memories_leadwave_bot"
+          CHANNEL: "@tw3nty21one"
           MINI_APP_URL: "https://t.me/memories_leadwave_bot/memories"
         run: |
           curl -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
