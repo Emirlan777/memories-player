@@ -1,0 +1,20 @@
+name: Publish Telegram Post
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send post to Telegram
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHANNEL: "@memories_leadwave_bot"
+          MINI_APP_URL: "https://t.me/memories_leadwave_bot/memories"
+        run: |
+          curl -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+            -d "chat_id=${CHANNEL}" \
+            --data-urlencode "text=🎵 Memories — Leadwave%0A%0AНажми кнопку ниже, чтобы послушать трек." \
+            --data-urlencode 'reply_markup={"inline_keyboard":[[{"text":"▶️ PLAY","url":"https://t.me/memories_leadwave_bot/memories"}]]}'
